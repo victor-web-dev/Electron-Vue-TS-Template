@@ -1,0 +1,34 @@
+{
+  "name": "electron-vue",
+  "version": "1.0.0",
+  "main": "./dist/main.js",
+  "author": "Author",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "front:build": "cd Tasker && yarn build",
+    "app:build": "yarn front:build && yarn build && electron-builder",
+    "dev:electron": "electron .",
+    "setup": "yarn install && cd Tasker && yarn install"
+  },
+  "devDependencies": {
+    "electron": "^24.1.2",
+    "electron-builder": "^23.6.0",
+    "typescript": "^5.0.4"
+  },
+  "build": {
+    "appId": "com.official-${name}.app",
+    "productName": "${name}",
+    "copyright": "Copyright © 2023 ${author}",
+    "files": ["dist/**/*"],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist_electron"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": true
+    }
+  }
+}
